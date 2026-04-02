@@ -1,0 +1,18 @@
+Inserir Categorias de Exemplo:
+
+INSERT INTO categorias (nome) VALUES
+('antibiótico'),
+('anti-inflamatório'),
+('analgésico');
+
+Inserir um Usuario de Exemplo:
+
+INSERT INTO usuarios (nome, email, senha, tipo) VALUES
+('Diego Rodolfo Inacio', '23202443@aluno.univesp.br', '123', 'doador');
+
+
+
+Inserir um medicamento de exemplo:
+
+INSERT INTO medicamentos (nome, principio_ativo, tipo, quantidade, unidade_quantidade, dosagem, data_validade, lote, categoria_id, usuario_id) VALUES
+('Paracetamol', 'Paracetamol', 'comprimido', 10.00, 'unidade', '500mg', '2025-12-31', 'ABC12345', 3, 1);
