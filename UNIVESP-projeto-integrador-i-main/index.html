@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      defer></script>
+      <script src="script.js" defer></script>
+    <script defer>
+      // Script para validar o formulário e exibir notificação de sucesso
+      document.addEventListener('DOMContentLoaded', function () {
+        const form = document.forms['form1'];
+        const alertaSucesso = document.getElementById('alertaSucesso');
+
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          if (form.checkValidity()) {
+            // Mostra o alerta de sucesso
+            alertaSucesso.classList.remove('d-none');
+
+            // Opcional: limpar formulário após envio
+            form.reset();
+            form.classList.remove('was-validated');
+
+            // Opcional: esconder automaticamente após 5 segundos
+            setTimeout(() => {
+              alertaSucesso.classList.add('d-none');
+            }, 5000);
+          } else {
+            form.classList.add('was-validated');
+          }
+        });
+      });
+    </script>
+    <title>Programa de Doação de Medicamentos</title>
+  </head>
+  <body>
+    <!-- Cabeçalho -->
+    <div class="header">
+      <div class="logo-container">
+  <img
+    src="LOGO_MEDICA.png"
+    alt="Logo do Programa de Doação de Medicamentos"
+    style="width: 150px; height: auto;" />
+</div>
+
+      <h1 class="text-center">Programa de Doação de Medicamentos</h1>
+      <hr />
+    </div>
+    <!-- Formulário -->
+    <div class="form-container">
+      <form
+        name="form1"
+        class="row g-3 needs-validation"
+        novalidate>
+        <div id="notificacao" class="alert alert-success d-none" role="alert"></div>
+        <div class="col-md-6">
+          <label for="nome" class="form-label">Nome Completo</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nome"
+            placeholder="Digite seu nome..."
+            required />
+          <div class="invalid-feedback">Informe seu Nome Completo.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="endereco" class="form-label">Endereço</label>
+          <input
+            type="text"
+            class="form-control"
+            id="endereco"
+            placeholder="Avenida, Rua..."
+            required />
+          <div id="feedbackEndereco" class="invalid-feedback">
+            Informe um Endereço Válido.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="numero" class="form-label">Número</label>
+          <input
+            type="text"
+            class="form-control"
+            id="numero"
+            placeholder="Número"
+            pattern="\d{1,5}"
+            required />
+          <div class="invalid-feedback">Informe o número do seu endereço.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="telefone" class="form-label">Telefone</label>
+          <input
+            type="text"
+            class="form-control"
+            id="telefone"
+            placeholder="Telefone"
+            pattern="\d{11}"
+            required />
+          <div class="invalid-feedback">DDD + Numero </div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="medicamentos" class="form-label">Medicamentos</label>
+          <select id="medicamentos" class="form-select" required>
+            <option value="" disabled selected>
+              Selecione o medicamento que necessita...
+            </option>
+            <option value="Paracetamol">Paracetamol</option>
+            <option value="Dipirona">Dipirona</option>
+            <option value="Ibuprofeno">Ibuprofeno</option>
+            <option value="Cimegripe">Cimegripe</option>
+            <option value="Dorflex">Dorflex</option>
+            <option value="Neosaldina">Neosaldina</option>
+          </select>
+          <div class="invalid-feedback">Selecione um medicamento.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="quantidade" class="form-label">Quantidade</label>
+          <select id="quantidade" class="form-select" required>
+            <option value="" disabled selected>
+              Informe a quantidade que necessita...
+            </option>
+            <option value="3 Comprimidos">3 Comprimidos</option>
+            <option value="5 Comprimidos">5 Comprimidos</option>
+          </select>
+          <div class="invalid-feedback">
+            Informe a quantidade que necessita.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="renda" class="form-label">Renda</label>
+          <div class="input-group">
+            <div class="input-group-text">R$</div>
+            <input
+              type="text"
+              class="form-control"
+              id="renda"
+              placeholder="1.518,00"
+              required />
+          </div>
+          <div id="feedbackRenda" class="invalid-feedback">
+            Informe o seu rendimento.
+          </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <input
+            type="submit"
+            class="btn btn-primary me-md-2"
+            value="Enviar"
+            id="btnEnviar" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
